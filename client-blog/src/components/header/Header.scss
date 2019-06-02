@@ -1,0 +1,17 @@
+.blog__header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .blog__links {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-basis: 50%;
+    }
+    .blog__title a {
+        font-size: 2rem;
+        font-weight: 600;
+        text-decoration: none;
+    }
+}

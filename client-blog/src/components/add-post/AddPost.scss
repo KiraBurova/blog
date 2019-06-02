@@ -1,0 +1,17 @@
+.add-post {
+  display: flex;
+  justify-content: space-around;
+
+  .add-post__form {
+    flex-basis: 40%;
+
+    .group {
+        width: 100%;
+    }
+  }
+
+  .add-post__preview {
+      flex-basis: 40%;
+      background: #000;
+  }
+}

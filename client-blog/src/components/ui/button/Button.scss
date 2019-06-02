@@ -1,0 +1,25 @@
+@import '../../../vars.scss';
+
+button {
+    display: flex;
+    justify-content: center;
+    min-width: 64px;
+    height: 32px;
+    padding: 0 1em;
+    border: none;
+    border-radius: 4px;
+    background: rgba($main-brown, 0.2);
+    color: $main-brown;
+    border: 1px solid transparent;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1rem;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        border: 1px solid rgba($main-brown, 0.5);
+    }
+}

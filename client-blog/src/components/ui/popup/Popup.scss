@@ -1,0 +1,50 @@
+@import '../../../vars.scss';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: all .5s ease-in-out;
+  z-index: 99;
+}
+
+.popup {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 70px auto;
+    padding: 20px;
+    background-color: #fafbfb;
+    border-radius: 4px;
+    width: 30%;
+    transition: all .5s ease-in-out;
+    z-index: 100;
+}
+
+.popup {
+    .group {
+        width: 80%;
+    }
+}
+
+.popup__login {
+    display: inline-block;
+    padding: 0;
+    color: $main-brown;
+    background: transparent;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    text-transform: none;
+
+    &:hover {
+        text-decoration: underline;
+        border: none;
+    }
+}
