@@ -5,11 +5,15 @@ import './Header.scss';
 
 import Button from '../ui/button/Button';
 import StyledLink from '../ui/link/Link';
-import Form from '../ui/form/Form';
-import Input from '../ui/input/Input';
-import Popup from '../ui/popup/Popup';
 
-const Header = ({ togglePopupWindow, popupIsVisible }) => {
+import User from '../user/User';
+
+const Header = ({
+  togglePopupWindow,
+  popupIsVisible,
+  registerUser,
+  messages,
+}) => {
   const [stage, setStage] = useState('register');
 
   function changeStage(stageVal) {
@@ -19,35 +23,14 @@ const Header = ({ togglePopupWindow, popupIsVisible }) => {
   return (
     <>
       {popupIsVisible && (
-        <Popup togglePopupWindow={togglePopupWindow} setStage={setStage}>
-          <Form>
-            {stage === 'register' && (
-              <>
-                <h2>Register</h2>
-                <Input type="text" placeholder="Login" />
-                <Input type="email" placeholder="Email" />
-                <Input type="password" placeholder="Password" />
-                <Button text="Register" />
-                <p>
-                  <span>Already registered?</span>
-                  <Button
-                    className="popup__login"
-                    text="Login"
-                    onClick={() => changeStage('login')}
-                  />
-                </p>
-              </>
-            )}
-            {stage === 'login' && (
-              <>
-                <h2>Login</h2>
-                <Input type="text" placeholder="Login" />
-                <Input type="password" placeholder="Password" />
-                <Button text="Register" />
-              </>
-            )}
-          </Form>
-        </Popup>
+        <User
+          changeStage={changeStage}
+          stage={stage}
+          togglePopupWindow={togglePopupWindow}
+          setStage={setStage}
+          registerUser={registerUser}
+          messages={messages}
+        />
       )}
       <header className="blog__header">
         <h1 className="blog__title">
