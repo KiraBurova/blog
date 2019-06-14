@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Form.scss';
 
 const Form = ({ children, onSubmit }) => (
-  <form className="blog__form container" onSubmit={onSubmit}>
+  <form className="form container" onSubmit={onSubmit}>
     {children}
   </form>
 );

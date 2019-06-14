@@ -11,9 +11,9 @@ const Input = ({
   onChange,
   required,
 }) => (
-  <div className="group">
-    <input name={name} type={type} id={placeholder} onChange={onChange} required={required} />
-    <label htmlFor={placeholder}>{placeholder}</label>
+  <div className="group input">
+    <input className="input__field" name={name} type={type} id={placeholder} onChange={onChange} required={required} />
+    <label className="input__label" htmlFor={placeholder}>{placeholder}</label>
   </div>
 );
 

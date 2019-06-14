@@ -41,7 +41,6 @@ const Header = ({
           <StyledLink to="/add-post" text="Add post" />
           <StyledLink to="/settings" text="Settings" />
           <Button
-            className="blog__login"
             text="Login or Register"
             onClick={() => togglePopupWindow()}
           />

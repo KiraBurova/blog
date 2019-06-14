@@ -5,6 +5,7 @@ import Button from '../ui/button/Button';
 import Form from '../ui/form/Form';
 import Input from '../ui/input/Input';
 import Popup from '../ui/popup/Popup';
+import Alert from '../ui/alert/Alert';
 
 const User = ({
   stage,
@@ -32,11 +33,6 @@ const User = ({
   }
   return (
     <Popup togglePopupWindow={togglePopupWindow} setStage={setStage}>
-      {messages
-        && messages.errors
-        && messages.errors.map(message => (
-          <div key={message.message}>{message.message}</div>
-        ))}
       <Form onSubmit={onRegisterUser}>
         {stage === 'register' && (
           <>
@@ -66,10 +62,11 @@ const User = ({
               required
             />
             <Button text="Register" type="submit" />
+            <Alert messages={messages} />
             <p>
               <span>Already registered?</span>
               <Button
-                className="popup__login"
+                className="button popup__login"
                 text="Login"
                 onClick={() => changeStage('login')}
               />
@@ -79,8 +76,8 @@ const User = ({
         {stage === 'login' && (
           <>
             <h2>Login</h2>
-            <Input type="text" placeholder="Login" />
-            <Input type="password" placeholder="Password" />
+            <Input type="text" placeholder="Login" required />
+            <Input type="password" placeholder="Password" required />
             <Button text="Login" />
           </>
         )}

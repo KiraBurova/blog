@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import './Link.scss';
 
 const StyledLink = ({ to, text }) => (
-  <Link to={to}>{text}</Link>
+  <Link to={to} className="link">{text}</Link>
 );
 
 StyledLink.propTypes = {

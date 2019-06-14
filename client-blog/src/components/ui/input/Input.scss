@@ -6,7 +6,7 @@
   width: 30%;
 }
 
-input {
+.input__field {
   border: 0;
   border-bottom: 2px solid $main-brown;
   background-color: #fafbfb;
@@ -26,7 +26,7 @@ input {
   }
 }
 
-label {
+.input__label {
   top: 0;
   left: 0;
   right: 0;
@@ -40,8 +40,8 @@ label {
   box-sizing: border-box;
 }
 
-input,
-label {
+.input__label,
+.input__field {
   width: 100%;
   height: 3rem;
   font-size: 1rem;

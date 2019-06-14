@@ -8,13 +8,11 @@ const Textarea = ({ placeholder }) => {
   function handleKeyDown(e) {
     e.target.style.height = 'inherit';
     e.target.style.height = `${e.target.scrollHeight}px`;
-    // In case you have a limitation
-    // e.target.style.height = `${Math.min(e.target.scrollHeight, limit)}px`;
   }
   return (
-    <div className="group">
-      <textarea onKeyDown={e => handleKeyDown(e)} />
-      {/* <label htmlFor={placeholder}>{placeholder}</label> */}
+    <div className="group textarea">
+      <textarea className="textarea__field" onKeyDown={e => handleKeyDown(e)} />
+      <label className="textarea__label" htmlFor={placeholder}>{placeholder}</label>
     </div>
   );
 };
