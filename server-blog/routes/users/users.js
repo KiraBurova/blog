@@ -11,20 +11,26 @@ router.post('/register', (req, res) => {
     errors.push({
       message:
         'One of required fields is empty. Please fill all required fields.',
+      status: 'error',
     });
   }
   if (password && password.length < 6) {
-    errors.push({ message: 'Password should be longer than 6 letters.' });
+    errors.push({
+      message: 'Password should be longer than 6 letters.',
+      status: 'error',
+    });
   }
   if (errors && errors.length) {
     res.status(400).json({ errors });
   } else {
     UserModel.findOne({ email: email }).then(user => {
       if (user) {
-        errors.push({ message: 'This email is already in use.' });
+        errors.push({
+          message: 'This email is already in use.',
+          status: 'error',
+        });
         res.status(400).json({ errors });
       } else {
-
         const user = new UserModel({
           login,
           email,
@@ -37,10 +43,12 @@ router.post('/register', (req, res) => {
             if (error) throw error;
             user.password = hash;
 
-            user.save((error) => {
-              if(error) throw error;
-              res.send(200).json({message: 'You are successfully registered!'})
-            })
+            user.save(error => {
+              if (error) throw error;
+              res
+                .send(200)
+                .json({ message: 'You are successfully registered!' });
+            });
           });
         });
       }

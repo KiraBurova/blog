@@ -9,7 +9,7 @@ const Alert = ({ messages }) => (
     {messages &&
       messages.errors &&
       messages.errors.map(message => (
-        <p className="alert__message" key={message.message}>
+        <p className={`alert__message ${message.status === 'error' ? 'alert__message_error' : 'alert__message_ok'}`} key={message.message}>
           {message.message}
         </p>
       ))}

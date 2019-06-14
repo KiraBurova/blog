@@ -2,10 +2,12 @@
 
 .alert {
     text-align: center;
-    color: $main-red;
     margin-top: 20px;
 
     .alert__message {
         margin: 0;
+    }
+    .alert__message_error {
+        color: $main-red;
     }
 }
