@@ -11,14 +11,14 @@ const Input = ({
   onChange,
   required,
 }) => (
+
   <div className="group input">
-    <input className="input__field" name={name} type={type} id={placeholder} onChange={onChange} required={required} />
-    <label className="input__label" htmlFor={placeholder}>{placeholder}</label>
+    <input className="input__field" name={name} type={type} id={placeholder} placeholder={placeholder} onChange={onChange} required={required} />
   </div>
 );
 
 Input.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   name: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
@@ -26,6 +26,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  type: 'text',
   placeholder: 'Text',
   name: '',
   onChange: () => {},

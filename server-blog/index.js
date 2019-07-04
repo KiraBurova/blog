@@ -1,16 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const passport = require('passport');
 const dbUrl = require('./config/config').url;
 const usersRoute = require('./routes/users/users');
 
 const app = express();
 const PORT = 8080;
-app.use(express.json())
+
+app.use(express.json());
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport')(passport);
 
 mongoose.connect(dbUrl, { useNewUrlParser: true })
-    .then(() => console.log('MongoDB is connected'))
+  .then(() => console.log('MongoDB is connected'));
 
 
 app.use('/users', usersRoute);
 
-app.listen(PORT, () => console.log(`Listeting on port ${PORT}`))
+app.listen(PORT, () => console.log(`Listeting on port ${PORT}`));

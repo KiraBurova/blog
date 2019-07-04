@@ -1,37 +1,12 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
 import './Header.scss';
 
-import Button from '../ui/button/Button';
 import StyledLink from '../ui/link/Link';
 
-import User from '../user/User';
-
-const Header = ({
-  togglePopupWindow,
-  popupIsVisible,
-  registerUser,
-  messages,
-}) => {
-  const [stage, setStage] = useState('register');
-
-  function changeStage(stageVal) {
-    setStage(stageVal);
-  }
-
+const Header = () => {
   return (
     <>
-      {popupIsVisible && (
-        <User
-          changeStage={changeStage}
-          stage={stage}
-          togglePopupWindow={togglePopupWindow}
-          setStage={setStage}
-          registerUser={registerUser}
-          messages={messages}
-        />
-      )}
       <header className="blog__header">
         <h1 className="blog__title">
           <StyledLink to="/" text="Blog" />
@@ -40,19 +15,12 @@ const Header = ({
           <StyledLink to="/" text="Home" />
           <StyledLink to="/add-post" text="Add post" />
           <StyledLink to="/settings" text="Settings" />
-          <Button
-            text="Login or Register"
-            onClick={() => togglePopupWindow()}
-          />
+          <StyledLink to="/login" text="Login" />
+          <StyledLink to="/register" text="Register" />
         </div>
       </header>
     </>
   );
-};
-
-Header.propTypes = {
-  togglePopupWindow: PropTypes.func.isRequired,
-  popupIsVisible: PropTypes.bool.isRequired,
 };
 
 export default Header;

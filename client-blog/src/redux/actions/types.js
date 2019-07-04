@@ -1,2 +1,3 @@
 export const TOGGLE_POPUP_WINDOW = 'TOGGLE_POPUP_WINDOW';
 export const REGISTER_USER = 'REGISTER_USER';
+export const LOGIN_USER = 'LOGIN_USER';

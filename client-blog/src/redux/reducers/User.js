@@ -1,5 +1,7 @@
 const initialState = {
   messages: {},
+  userLoggedIn: false,
+  userRegistered: false
 };
 
 const user = (state = initialState, action) => {
@@ -8,7 +10,13 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         messages: action.messages,
+        userRegistered: action.userRegistered
       };
+      case 'LOGIN_USER':
+        return {
+          ...state,
+          userLoggedIn: action.userLoggedIn
+        }
     default:
       return state;
   }

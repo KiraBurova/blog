@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { togglePopupWindow, registerUser } from '../../redux/actions/index';
+import { registerUser, loginUser } from '../../redux/actions/index';
 import Header from './Header';
 
 export const HeaderContainer = () => (
@@ -14,8 +14,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  togglePopupWindow: popupToggled => dispatch(togglePopupWindow(popupToggled)),
   registerUser: registeredUserData => dispatch(registerUser(registeredUserData)),
+  loginUser: loginUserData => dispatch(loginUser(loginUserData)),
 });
 
 export default connect(

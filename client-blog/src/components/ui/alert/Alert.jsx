@@ -6,9 +6,9 @@ import './Alert.scss';
 
 const Alert = ({ messages }) => (
   <div className="alert">
-    {messages &&
-      messages.errors &&
-      messages.errors.map(message => (
+    {messages
+      && messages.errors
+      && messages.errors.map(message => (
         <p className={`alert__message ${message.status === 'error' ? 'alert__message_error' : 'alert__message_ok'}`} key={message.message}>
           {message.message}
         </p>

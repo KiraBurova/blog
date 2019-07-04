@@ -31,6 +31,7 @@ module.exports = {
               "some": [ "nesting", "id"  ]
             }
           }],
-          "import/prefer-default-export": "off"
+          "import/prefer-default-export": "off",
+          "arrow-parens": "off"
     }
 };
