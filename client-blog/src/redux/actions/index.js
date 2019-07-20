@@ -1,11 +1,6 @@
-import { TOGGLE_POPUP_WINDOW, REGISTER_USER, LOGIN_USER } from './types';
+import { REGISTER_USER, LOGIN_USER } from './types';
 
 const axios = require('axios');
-
-export const togglePopupWindow = popupVisibillity => ({
-  type: TOGGLE_POPUP_WINDOW,
-  popupVisibillity,
-});
 
 export const registerUser = registeredUserData => async (dispatch) => {
   let messages;

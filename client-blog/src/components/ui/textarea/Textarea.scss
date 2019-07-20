@@ -1,48 +1,19 @@
 @import '../../../vars.scss';
 
-.group {
-  position: relative;
-  margin-bottom: 45px;
-  width: 30%;
-}
-
-.textarea {
+.textarea__field {
+  width: 100%;
+  height: 3rem;
+  font-size: 1rem;
   border: 0;
   border-bottom: 2px solid $main-brown;
   background-color: #fafbfb;
   outline: none;
-  transition: 0.2s ease-in-out;
   box-sizing: border-box;
   resize: none;
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
 
   &:focus {
     border-bottom: 2px solid #26a69a;
-    & + label {
-      color: #26a69a;
-      font-size: 0.8rem;
-      top: -30px;
-      pointer-events: none;
-    }
   }
-}
-
-.textarea__label {
-  top: 0;
-  left: 0;
-  right: 0;
-  color: $main-brown;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  font-size: 1rem;
-  cursor: text;
-  transition: 0.2s ease-in-out;
-  box-sizing: border-box;
-}
-
-.textarea__field,
-.textarea__label {
-  width: 100%;
-  height: 3rem;
-  font-size: 1rem;
 }

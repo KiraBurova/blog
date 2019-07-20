@@ -11,8 +11,7 @@ const Textarea = ({ placeholder }) => {
   }
   return (
     <div className="group textarea">
-      <textarea className="textarea__field" onKeyDown={e => handleKeyDown(e)} />
-      <label className="textarea__label" htmlFor={placeholder}>{placeholder}</label>
+      <textarea placeholder={placeholder} className="textarea__field" onKeyDown={e => handleKeyDown(e)} />
     </div>
   );
 };

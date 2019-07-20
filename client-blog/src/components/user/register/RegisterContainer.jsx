@@ -19,7 +19,7 @@ export const RegisterContainer = ({ history }) => {
   const onRegisterUser = async (e) => {
     e.preventDefault();
     await registerUser(registeredUserData);
-    // history.push('/login');
+    history.push('/login');
   };
   return (
     <RegisterForm

@@ -9,7 +9,6 @@ export const HeaderContainer = () => (
 
 
 const mapStateToProps = state => ({
-  popupIsVisible: state.popupVisibillity.popupIsVisible,
   messages: state.user.messages,
 });
 

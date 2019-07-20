@@ -1,12 +1,7 @@
 @import '../../../vars.scss';
 
-.group {
-  position: relative;
-  margin-bottom: 45px;
-  width: 30%;
-}
-
 .input__field {
+  padding: 10px;
   border: 0;
   border-bottom: 2px solid $main-brown;
   background-color: #fafbfb;

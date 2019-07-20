@@ -8,7 +8,6 @@ import rootReducer from '../redux/reducers';
 
 import HeaderContainer from './header/HeaderContainer';
 import HomeContainer from './home/HomeContainer';
-import SettingsContainer from './settings/SettingsContainer';
 import AddPostConainer from './add-post/AddPostContainer';
 import LoginContainer from './user/login/LoginContainer';
 import RegisterContainer from './user/register/RegisterContainer';
@@ -29,7 +28,6 @@ const Routes = () => (
       <Switch>
         <div>
           <Route path="/" component={HomeContainer} exact />
-          <Route path="/settings" component={SettingsContainer} exact />
           <Route path="/add-post" component={AddPostConainer} exact />
           <Route path="/register" component={RegisterContainer} exact />
           <Route path="/login" component={LoginContainer} exact />
