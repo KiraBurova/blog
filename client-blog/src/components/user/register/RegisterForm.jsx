@@ -1,51 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import PropTypes from 'prop-types';
 
 import Form from '../../ui/form/Form';
 import Input from '../../ui/input/Input';
 import Button from '../../ui/button/Button';
+import Alert from '../../ui/alert/Alert';
 
-const RegisterForm = ({ updateField, registeredUserData, registerUser }) => (
-  <Form onSubmit={registerUser}>
-    <Input
-      placeholder="Email"
-      type="email"
-      name="email"
-      id="email"
-      onChange={updateField}
-      value={registeredUserData.email}
-      required
-    />
-    <Input
-      placeholder="Login"
-      name="login"
-      id="login"
-      onChange={updateField}
-      value={registeredUserData.login}
-      required
-    />
-    <Input
-      placeholder="Password"
-      type="password"
-      name="password"
-      id="password"
-      onChange={updateField}
-      value={registeredUserData.password}
-      required
-    />
-    <Button text="Register" type="submit" />
-  </Form>
-);
+const RegisterForm = ({ registerUser, messages, history }) => {
+  const [registeredUserData, setValues] = useState({
+    email: '',
+    login: '',
+    password: '',
+  });
+  const onUpdateField = e => {
+    setValues({
+      ...registeredUserData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const onRegisterUser = async (e) => {
+    e.preventDefault();
+    await registerUser(registeredUserData)
+      .then(() => console.log('here'))
+      .catch(error => console.log('jjkkjkj'));
+  };
+  return (
+    <Form onSubmit={onRegisterUser}>
+      <Input
+        placeholder="Email"
+        type="email"
+        name="email"
+        id="email"
+        onChange={onUpdateField}
+        value={registeredUserData.email}
+        required
+      />
+      <Input
+        placeholder="Login"
+        name="login"
+        id="login"
+        onChange={onUpdateField}
+        value={registeredUserData.login}
+        required
+      />
+      <Input
+        placeholder="Password"
+        type="password"
+        name="password"
+        id="password"
+        onChange={onUpdateField}
+        value={registeredUserData.password}
+        required
+      />
+      <Button text="Register" type="submit" />
+      <Alert messages={messages} />
+    </Form>
+  );
+};
 
 RegisterForm.propTypes = {
-  updateField: PropTypes.func.isRequired,
   registerUser: PropTypes.func.isRequired,
-  registeredUserData: PropTypes.shape({
-    login: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-  }).isRequired,
+  messages: PropTypes.shape({ message: PropTypes.string }),
+  history: PropTypes.shape({}).isRequired,
+};
+
+RegisterForm.defaultProps = {
+  messages: {},
 };
 
 export default RegisterForm;

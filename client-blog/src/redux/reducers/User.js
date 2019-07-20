@@ -1,22 +1,20 @@
 const initialState = {
-  messages: {},
-  userLoggedIn: false,
-  userRegistered: false
+  registerMessages: {},
+  loginMessages: {},
 };
 
 const user = (state = initialState, action) => {
   switch (action.type) {
-    case 'REGISTER_USER':
+    case 'REGISTER_USER_SUCCESS':
       return {
         ...state,
-        messages: action.messages,
-        userRegistered: action.userRegistered
+        registerMessages: action.messages,
       };
-      case 'LOGIN_USER':
-        return {
-          ...state,
-          userLoggedIn: action.userLoggedIn
-        }
+    case 'LOGIN_USER':
+      return {
+        ...state,
+        loginMessages: action.messages,
+      };
     default:
       return state;
   }

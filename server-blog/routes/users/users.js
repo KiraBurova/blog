@@ -45,9 +45,7 @@ router.post('/register', (req, res) => {
             if (hashError) throw hashError;
             newUser.password = hash;
 
-            newUser
-              .save()
-              .then(response => console.log(response));
+            newUser.save().then(response => console.log(response));
           });
         });
       }
@@ -55,10 +53,25 @@ router.post('/register', (req, res) => {
   }
 });
 
-router.post('/login', (req, res, next) => { next(); },
-  passport.authenticate('local'),
-  (req, res) => {
-    res.json({ message: 'You are successfully logged in!' });
-  });
-
+router.post('/login', (req, res, next) => {
+  const errors = [];
+  passport.authenticate('local', (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      errors.push({
+        message: 'User was not found.',
+        status: 'error',
+      });
+      return res.status(400).json({ errors });
+    }
+    req.logIn(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      return res.status(200).json();
+    });
+  })(req, res, next);
+});
 module.exports = router;
