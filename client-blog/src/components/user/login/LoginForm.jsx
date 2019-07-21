@@ -5,9 +5,9 @@ import Input from '../../ui/input/Input';
 import Button from '../../ui/button/Button';
 import Alert from '../../ui/alert/Alert';
 
-const LoginForm = ({ messages, loginUser }) => {
+const LoginForm = ({ messages, loginUser, history }) => {
   const [loginUserData, setValues] = useState({
-    login: '',
+    email: '',
     password: '',
   });
   const onUpdateField = e => {
@@ -18,17 +18,18 @@ const LoginForm = ({ messages, loginUser }) => {
   };
   const onLoginUser = (e) => {
     e.preventDefault();
-    console.log(123)
-    loginUser(loginUserData);
+    loginUser(loginUserData)
+      .then(() => history.push('/home'))
+      .catch(() => history.push('/login'));
   };
   return (
     <Form onSubmit={onLoginUser}>
       <Input
-        placeholder="Login"
-        name="login"
-        id="login"
+        placeholder="Email"
+        name="email"
+        id="email"
         onChange={onUpdateField}
-        value={loginUserData.login}
+        value={loginUserData.email}
         required
       />
       <Input
@@ -49,6 +50,7 @@ const LoginForm = ({ messages, loginUser }) => {
 LoginForm.propTypes = {
   loginUser: PropTypes.func.isRequired,
   messages: PropTypes.shape({ message: PropTypes.string }),
+  history: PropTypes.shape({}).isRequired,
 };
 
 LoginForm.defaultProps = {

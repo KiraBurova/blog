@@ -19,11 +19,11 @@ const RegisterForm = ({ registerUser, messages, history }) => {
       [e.target.name]: e.target.value,
     });
   };
-  const onRegisterUser = async (e) => {
+  const onRegisterUser = (e) => {
     e.preventDefault();
-    await registerUser(registeredUserData)
-      .then(() => console.log('here'))
-      .catch(error => console.log('jjkkjkj'));
+    registerUser(registeredUserData)
+      .then(() => history.push('/login'))
+      .catch(() => history.push('/register'));
   };
   return (
     <Form onSubmit={onRegisterUser}>

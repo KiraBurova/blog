@@ -4,15 +4,13 @@
   height: 100%;
 
   .add-post__form {
-    flex-basis: 40%;
+    width: 100%;
 
     .group {
         width: 100%;
     }
-  }
-
-  .add-post__preview {
-      flex-basis: 40%;
-      background: #000;
+    .form {
+      max-width: 900px;
+    }
   }
 }

@@ -1,6 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addPost } from '../../redux/actions/index';
 import AddPost from './AddPost';
 
-const AddPostContainer = () => <AddPost />;
+export const AddPostContainer = () => <AddPost />;
 
-export default AddPostContainer;
+const mapDispatchToProps = dispatch => ({
+  addPost: postData => dispatch(addPost(postData)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(AddPost);

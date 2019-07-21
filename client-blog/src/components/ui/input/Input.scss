@@ -9,8 +9,7 @@
   transition: 0.2s ease-in-out;
   box-sizing: border-box;
 
-  &:focus,
-  &:valid {
+  &:focus {
     border-bottom: 2px solid #26a69a;
     & + label {
       color: #26a69a;

@@ -1,20 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import Form from '../ui/form/Form';
 import Button from '../ui/button/Button';
 import Textarea from '../ui/textarea/Textarea';
+import Input from '../ui/input/Input';
 
 import './AddPost.scss';
 
-const AddPost = () => (
-  <div className="add-post container">
-    <div className="add-post__form">
-      <Form>
-        <Textarea placeholder="dfd" />
-        <Button type="button" text="Save Settings" />
-      </Form>
+const AddPost = ({ addPost }) => {
+  const [postData, setValues] = useState({
+    title: '',
+    body: '',
+  });
+  const onUpdateField = e => {
+    setValues({
+      ...postData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const onAddPost = e => {
+    e.preventDefault();
+    addPost(postData);
+  };
+  return (
+    <div className="add-post container">
+      <div className="add-post__form">
+        <Form onSubmit={onAddPost}>
+          <Input
+            name="title"
+            type="text"
+            onChange={onUpdateField}
+            value={postData.title}
+          />
+          <Textarea
+            name="body"
+            placeholder="Your post here"
+            onChange={onUpdateField}
+            value={postData.body}
+          />
+          <Button type="submit" text="Add post" />
+        </Form>
+      </div>
     </div>
-    <div class="add-post__preview" />
-  </div>
-);
+  );
+};
+
+AddPost.propTypes = {
+  addPost: PropTypes.func.isRequired,
+};
+
 
 export default AddPost;

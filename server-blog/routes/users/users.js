@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const jwt = require('jsonwebtoken');
 
 const router = express.Router();
 const UserModel = require('./models');
@@ -45,7 +46,7 @@ router.post('/register', (req, res) => {
             if (hashError) throw hashError;
             newUser.password = hash;
 
-            newUser.save().then(response => console.log(response));
+            newUser.save().then(response => res.status(200).json({ response }));
           });
         });
       }
@@ -55,7 +56,7 @@ router.post('/register', (req, res) => {
 
 router.post('/login', (req, res, next) => {
   const errors = [];
-  passport.authenticate('local', (err, user, info) => {
+  passport.authenticate('local', (err, user) => {
     if (err) {
       return next(err);
     }
@@ -66,12 +67,18 @@ router.post('/login', (req, res, next) => {
       });
       return res.status(400).json({ errors });
     }
-    req.logIn(user, (err) => {
-      if (err) {
-        return next(err);
+    req.logIn(user, (error) => {
+      if (error) {
+        return next(error);
       }
-      return res.status(200).json();
+      const token = jwt.sign(user.toObject(), process.env.SECRET);
+      return res.status(200).json({ token });
     });
   })(req, res, next);
+});
+
+router.get('/logout', (req, res) => {
+  req.logout();
+  // res.status(200)
 });
 module.exports = router;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { registerUser, loginUser } from '../../redux/actions/index';
+import { logoutUser } from '../../redux/actions/index';
+
 import Header from './Header';
 
 export const HeaderContainer = () => (
@@ -9,12 +10,11 @@ export const HeaderContainer = () => (
 
 
 const mapStateToProps = state => ({
-  messages: state.user.messages,
+  userLoggedIn: state.user.userLoggedIn,
 });
 
-const mapDispatchToProps = dispatch => ({
-  registerUser: registeredUserData => dispatch(registerUser(registeredUserData)),
-  loginUser: loginUserData => dispatch(loginUser(loginUserData)),
+const mapDispatchToProps = (dispatch) => ({
+  logoutUser: () => dispatch(logoutUser()),
 });
 
 export default connect(
