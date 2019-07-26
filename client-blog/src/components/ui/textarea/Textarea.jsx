@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import './Textarea.scss';
+import styles from './Textarea.module.scss';
 
 const Textarea = ({ placeholder, name, onChange }) => {
   function handleKeyDown(e) {
@@ -10,8 +10,14 @@ const Textarea = ({ placeholder, name, onChange }) => {
     e.target.style.height = `${e.target.scrollHeight}px`;
   }
   return (
-    <div className="group textarea">
-      <textarea placeholder={placeholder} name={name} className="textarea__field" onChange={onChange} onKeyDown={e => handleKeyDown(e)} />
+    <div className={styles.textarea}>
+      <textarea
+        placeholder={placeholder}
+        name={name}
+        className={styles.textarea__field}
+        onChange={onChange}
+        onKeyDown={e => handleKeyDown(e)}
+      />
     </div>
   );
 };
@@ -24,7 +30,7 @@ Textarea.propTypes = {
 Textarea.defaultProps = {
   placeholder: 'Text',
   name: '',
-  onChange: () => {},
+  onChange: () => { },
 };
 
 export default Textarea;

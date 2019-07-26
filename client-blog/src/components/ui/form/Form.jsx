@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Form.scss';
+import styles from './Form.module.scss';
 
 const Form = ({ children, onSubmit }) => (
-  <form className="form container" onSubmit={onSubmit}>
+  <form className={styles.form} onSubmit={onSubmit}>
     {children}
   </form>
 );

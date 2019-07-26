@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-import './Link.scss';
+import styles from './Link.module.scss';
 
 const StyledLink = ({ to, text }) => (
-  <Link to={to} className="link">{text}</Link>
+  <Link to={to} className={styles.link}>{text}</Link>
 );
 
 StyledLink.propTypes = {

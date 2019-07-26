@@ -32,6 +32,7 @@ module.exports = {
             }
           }],
           "import/prefer-default-export": "off",
-          "arrow-parens": "off"
+          "arrow-parens": "off",
+          "import/no-named-as-default": 0
     }
 };

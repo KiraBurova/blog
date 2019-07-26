@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import './Header.scss';
+import styles from './Header.module.scss';
 
 import StyledLink from '../ui/link/Link';
 import Button from '../ui/button/Button';
@@ -23,11 +23,11 @@ const Header = ({ logoutUser, userLoggedIn }) => {
 
   return (
     <>
-      <header className="blog__header">
-        <h1 className="blog__title">
+      <header className={styles.blog__header}>
+        <h1 className={styles.blog__title}>
           <StyledLink to="/" text="Blog" />
         </h1>
-        <div className="blog__links">
+        <div className={styles.blog__links}>
           <StyledLink to="/" text="Home" />
           <StyledLink to="/add-post" text="Add post" />
           {!token && !userLoggedIn

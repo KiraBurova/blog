@@ -1,5 +1,11 @@
 @import '../../../vars.scss';
 
+.input {
+  position: relative;
+  margin-bottom: 45px;
+  width: 100%;
+}
+
 .input__field {
   padding: 10px;
   border: 0;

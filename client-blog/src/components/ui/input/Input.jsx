@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-import './Input.scss';
+import styles from './Input.module.scss';
 
 const Input = ({
   type,
@@ -12,8 +12,16 @@ const Input = ({
   required,
 }) => (
 
-  <div className="group input">
-    <input className="input__field" name={name} type={type} id={placeholder} placeholder={placeholder} onChange={onChange} required={required} />
+  <div className={styles.input}>
+    <input
+      className={styles.input__field}
+      name={name}
+      type={type}
+      id={placeholder}
+      placeholder={placeholder}
+      onChange={onChange}
+      required={required}
+    />
   </div>
 );
 
@@ -29,7 +37,7 @@ Input.defaultProps = {
   type: 'text',
   placeholder: 'Text',
   name: '',
-  onChange: () => {},
+  onChange: () => { },
   required: false,
 };
 

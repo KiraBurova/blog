@@ -6,7 +6,7 @@ import Button from '../ui/button/Button';
 import Textarea from '../ui/textarea/Textarea';
 import Input from '../ui/input/Input';
 
-import './AddPost.scss';
+import styles from './AddPost.module.scss';
 
 const AddPost = ({ addPost }) => {
   const [postData, setValues] = useState({
@@ -24,8 +24,8 @@ const AddPost = ({ addPost }) => {
     addPost(postData);
   };
   return (
-    <div className="add-post container">
-      <div className="add-post__form">
+    <div className={styles['add-post']}>
+      <div className={styles['add-post__form']}>
         <Form onSubmit={onAddPost}>
           <Input
             name="title"

@@ -50,9 +50,10 @@ export const loginUser = loginUserData => async dispatch => {
   }
 };
 
-export const logoutUser = () => async dispatch => {
+export const logoutUser = () => dispatch => {
   try {
-    const response = await axios.get('/users/logout');
+    const response = axios.get('/users/logout');
+    console.log(response)
     dispatch({
       type: LOGOUT_USER_SUCCESS,
       userLoggedIn: false,

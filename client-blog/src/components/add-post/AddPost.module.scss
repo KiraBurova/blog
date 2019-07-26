@@ -7,7 +7,9 @@
     width: 100%;
 
     .group {
-        width: 100%;
+      position: relative;
+      margin-bottom: 45px;
+      width: 100%;
     }
     .form {
       max-width: 900px;
