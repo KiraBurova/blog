@@ -35,36 +35,36 @@ export const loginUser = loginUserData => async dispatch => {
   try {
     const response = await axios.post('/users/login', loginUserData);
     userLoggedIn = true;
-    dispatch({
+    await dispatch({
       type: LOGIN_USER_SUCCESS,
       userLoggedIn,
     });
     localStorage.setItem('token', response.data.token);
   } catch (error) {
     if (error.response) {
-      dispatch({
+      await dispatch({
         type: LOGIN_USER_FAILURE,
         messages: error.response.data,
       });
+      throw new Error(error);
     }
   }
 };
 
-export const logoutUser = () => dispatch => {
+export const logoutUser = () => async dispatch => {
   try {
-    const response = axios.get('/users/logout');
-    console.log(response)
-    dispatch({
+    await axios.get('/users/logout');
+    await dispatch({
       type: LOGOUT_USER_SUCCESS,
       userLoggedIn: false,
     });
-    localStorage.removeItem('token', response.data.token);
   } catch (error) {
     if (error.response) {
-      dispatch({
+      await dispatch({
         type: LOGOUT_USER_FAILURE,
         userLoggedIn: true,
       });
+      throw new Error(error);
     }
   }
 };

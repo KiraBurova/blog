@@ -14,7 +14,9 @@ const Header = ({ logoutUser, userLoggedIn }) => {
   };
 
   const logOut = () => {
-    logoutUser();
+    logoutUser()
+      .then(() => localStorage.removeItem('token'))
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
