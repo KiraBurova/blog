@@ -7,6 +7,8 @@ import {
   ADD_POST_FAILURE,
   LOGOUT_USER_SUCCESS,
   LOGOUT_USER_FAILURE,
+  FETCH_POSTS_SUCCESS,
+  FETCH_POSTS_FAILURE,
 } from './types';
 
 const axios = require('axios');
@@ -71,16 +73,36 @@ export const logoutUser = () => async dispatch => {
 
 export const addPost = postData => async dispatch => {
   try {
-    await axios.post('/posts/add', postData);
-    dispatch({
+    await axios.post('/posts/addPost', postData);
+    await dispatch({
       type: ADD_POST_SUCCESS,
+      post: postData,
     });
   } catch (error) {
     if (error.response) {
-      dispatch({
+      await dispatch({
         type: ADD_POST_FAILURE,
         messages: error.response.data,
       });
+      throw new Error(error);
+    }
+  }
+};
+
+export const fetchPosts = () => async dispatch => {
+  try {
+    const response = await axios.get('/posts/getPosts');
+    await dispatch({
+      type: FETCH_POSTS_SUCCESS,
+      postsList: response.data,
+    });
+  } catch (error) {
+    if (error.response) {
+      await dispatch({
+        type: FETCH_POSTS_FAILURE,
+        messages: error.response.data,
+      });
+      throw new Error(error);
     }
   }
 };

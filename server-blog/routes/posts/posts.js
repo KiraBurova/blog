@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const PostModel = require('./models');
 
-router.post('/add', (req, res) => {
+router.post('/addPost', (req, res) => {
   const { title, body } = req.body;
   const errors = [];
 
@@ -23,12 +23,12 @@ router.post('/add', (req, res) => {
     });
     newPost.save((err) => {
       if (err) throw err;
-      else res.status(200).json({ message: 'Post is added!' });
+      else res.status(200).end();
     });
   }
 });
 
-router.get('/posts', (req, res) => {
+router.get('/getPosts', (req, res) => {
   PostModel.find({}).then((posts) => {
     res.send(posts);
   });

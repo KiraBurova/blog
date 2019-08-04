@@ -8,7 +8,7 @@ import rootReducer from '../redux/reducers';
 
 import HeaderContainer from './header/HeaderContainer';
 import HomeContainer from './home/HomeContainer';
-import AddPostConainer from './add-post/AddPostContainer';
+import AddPostConainer from './posts/add-post/AddPostContainer';
 import LoginContainer from './user/login/LoginContainer';
 import RegisterContainer from './user/register/RegisterContainer';
 
@@ -22,19 +22,19 @@ const store = createStore(
 /* eslint-enable */
 
 const Routes = () => (
-  <React.Fragment>
+  <>
     <Provider store={store}>
       <HeaderContainer />
       <Switch>
-        <div>
+        <>
           <Route path="/" component={HomeContainer} exact />
           <Route path="/add-post" component={AddPostConainer} exact />
           <Route path="/register" component={RegisterContainer} exact />
           <Route path="/login" component={LoginContainer} exact />
-        </div>
+        </>
       </Switch>
     </Provider>
-  </React.Fragment>
+  </>
 );
 
 export default Routes;

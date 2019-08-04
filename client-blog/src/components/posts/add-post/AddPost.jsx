@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Form from '../ui/form/Form';
-import Button from '../ui/button/Button';
-import Textarea from '../ui/textarea/Textarea';
-import Input from '../ui/input/Input';
+import Form from '../../ui/form/Form';
+import Button from '../../ui/button/Button';
+import Textarea from '../../ui/textarea/Textarea';
+import Input from '../../ui/input/Input';
+import Alert from '../../ui/alert/Alert';
 
 import styles from './AddPost.module.scss';
 
-const AddPost = ({ addPost }) => {
+const AddPost = ({ addPost, messages, history }) => {
   const [postData, setValues] = useState({
     title: '',
     body: '',
@@ -21,7 +22,9 @@ const AddPost = ({ addPost }) => {
   };
   const onAddPost = e => {
     e.preventDefault();
-    addPost(postData);
+    addPost(postData)
+      .then(() => history.push('/'))
+      .catch(() => { });
   };
   return (
     <div className={styles['add-post']}>
@@ -40,6 +43,7 @@ const AddPost = ({ addPost }) => {
             value={postData.body}
           />
           <Button type="submit" text="Add post" />
+          <Alert messages={messages} />
         </Form>
       </div>
     </div>
@@ -48,7 +52,12 @@ const AddPost = ({ addPost }) => {
 
 AddPost.propTypes = {
   addPost: PropTypes.func.isRequired,
+  messages: PropTypes.shape({ message: PropTypes.string }),
+  history: PropTypes.shape({}).isRequired,
 };
 
+AddPost.defaultProps = {
+  messages: {},
+};
 
 export default AddPost;

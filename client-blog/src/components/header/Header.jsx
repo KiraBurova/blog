@@ -16,12 +16,14 @@ const Header = ({ logoutUser, userLoggedIn }) => {
   const logOut = () => {
     logoutUser()
       .then(() => localStorage.removeItem('token'))
-      .catch((error) => console.log(error));
+      .catch(() => { });
   };
 
   useEffect(() => {
     loadToken();
   }, []);
+
+  const loggedIn = token || userLoggedIn;
 
   return (
     <>
@@ -31,14 +33,14 @@ const Header = ({ logoutUser, userLoggedIn }) => {
         </h1>
         <div className={styles.blog__links}>
           <StyledLink to="/" text="Home" />
-          <StyledLink to="/add-post" text="Add post" />
+          {loggedIn && <StyledLink to="/add-post" text="Add post" />}
           {!token && !userLoggedIn
             && <>
               <StyledLink to="/login" text="Login" />
               <StyledLink to="/register" text="Register" />
             </>
           }
-          {(token || userLoggedIn) && <Button onClick={logOut} text="Logout" />}
+          {loggedIn && <Button onClick={logOut} text="Logout" />}
         </div>
       </header>
     </>

@@ -1,11 +1,10 @@
 import React from 'react';
+import PostsListContainer from '../posts/posts-list/PostsListContainer';
 
-const HomeContainer = () => {
-  return (
-    <div>
-      <h1>sdsdsd</h1>
-    </div>
-  );
-};
+const HomeContainer = () => (
+  <main>
+    <PostsListContainer />
+  </main>
+);
 
 export default HomeContainer;
