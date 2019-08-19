@@ -6,6 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../redux/reducers';
 
+import PrivateRoute from './PrivateRoute';
 import HeaderContainer from './header/HeaderContainer';
 import HomeContainer from './home/HomeContainer';
 import AddPostConainer from './posts/add-post/AddPostContainer';
@@ -26,12 +27,10 @@ const Routes = () => (
     <Provider store={store}>
       <HeaderContainer />
       <Switch>
-        <>
-          <Route path="/" component={HomeContainer} exact />
-          <Route path="/add-post" component={AddPostConainer} exact />
-          <Route path="/register" component={RegisterContainer} exact />
-          <Route path="/login" component={LoginContainer} exact />
-        </>
+        <PrivateRoute path="/" component={HomeContainer} exact />
+        <PrivateRoute path="/add-post" component={AddPostConainer} exact />
+        <Route path="/register" component={RegisterContainer} exact />
+        <Route path="/login" component={LoginContainer} exact />
       </Switch>
     </Provider>
   </>

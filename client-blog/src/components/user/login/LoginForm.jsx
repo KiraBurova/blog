@@ -19,7 +19,7 @@ const LoginForm = ({ messages, loginUser, history }) => {
   const onLoginUser = (e) => {
     e.preventDefault();
     loginUser(loginUserData)
-      .then(() => history.push('/home'))
+      .then(() => history.push('/'))
       .catch(() => history.push('/login'));
   };
   return (
