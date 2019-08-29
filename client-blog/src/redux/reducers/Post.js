@@ -26,10 +26,15 @@ const post = (state = initialState, action) => {
         ...state,
         messages: action.messages,
       };
-    case 'DELETE_POST':
+    case 'DELETE_POST_SUCCESS':
       return {
         ...state,
         postsList: state.postsList.filter(item => item._id !== action.id),
+      };
+    case 'DELETE_POST_FAILURE':
+      return {
+        ...state,
+        messages: action.messages,
       };
     default:
       return state;
