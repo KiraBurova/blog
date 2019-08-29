@@ -118,7 +118,6 @@ export const deletePost = (id) => async dispatch => {
       type: DELETE_POST_SUCCESS,
       id,
     });
-    fetchPosts();
   } catch (error) {
     if (error.response) {
       await dispatch({
