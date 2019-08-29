@@ -7,8 +7,6 @@ import style from './PostsList.module.scss';
 const PostsList = ({ fetchPosts, deletePost, postsList }) => {
   useEffect(() => {
     fetchPosts();
-
-    console.log(postsList);
   }, [fetchPosts]);
 
   return (
