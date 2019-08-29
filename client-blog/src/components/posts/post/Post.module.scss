@@ -1,8 +1,7 @@
 @import '../../../vars.scss';
 
 .post {
-    min-width: 600px;
-    max-width: 900px;
+    width: 600px;
     margin-bottom: 20px;
     padding: 20px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.16), 0 0px 5px rgba(0, 0, 0, 0.23);
@@ -11,4 +10,10 @@
 .post__body {
     padding-top: 20px;
     border-top: 1px solid $main-brown
+}
+
+.post__delete {
+    font-size: 0.8rem;
+    color: $main-red;
+    cursor: pointer;
 }

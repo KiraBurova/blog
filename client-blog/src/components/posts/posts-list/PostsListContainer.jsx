@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../../redux/actions/index';
+import { fetchPosts, deletePost } from '../../../redux/actions/index';
 import PostsList from './PostsList';
 
 export const PostsListContainer = () => <PostsList />;
@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchPosts: postsData => dispatch(fetchPosts(postsData)),
+  deletePost: id => dispatch(deletePost(id)),
 });
 
 export default connect(

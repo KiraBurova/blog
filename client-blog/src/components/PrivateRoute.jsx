@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const userLoggedIn = localStorage.getItem('token');
-  console.log(userLoggedIn);
   return (
     <Route
       {...rest}

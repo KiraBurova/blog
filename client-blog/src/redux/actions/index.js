@@ -9,6 +9,9 @@ import {
   LOGOUT_USER_FAILURE,
   FETCH_POSTS_SUCCESS,
   FETCH_POSTS_FAILURE,
+  DELETE_POST_SUCCESS,
+  DELETE_POST_FAILURE,
+
 } from './types';
 
 const axios = require('axios');
@@ -60,6 +63,7 @@ export const logoutUser = () => async dispatch => {
       type: LOGOUT_USER_SUCCESS,
       userLoggedIn: false,
     });
+    localStorage.removeItem('token');
   } catch (error) {
     if (error.response) {
       await dispatch({
@@ -100,6 +104,25 @@ export const fetchPosts = () => async dispatch => {
     if (error.response) {
       await dispatch({
         type: FETCH_POSTS_FAILURE,
+        messages: error.response.data,
+      });
+      throw new Error(error);
+    }
+  }
+};
+
+export const deletePost = (id) => async dispatch => {
+  try {
+    await axios.post(`posts/deletePost/${id}`, id);
+    await dispatch({
+      type: DELETE_POST_SUCCESS,
+      id,
+    });
+    fetchPosts();
+  } catch (error) {
+    if (error.response) {
+      await dispatch({
+        type: DELETE_POST_FAILURE,
         messages: error.response.data,
       });
       throw new Error(error);

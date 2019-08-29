@@ -4,14 +4,16 @@ import Post from '../post/Post';
 
 import style from './PostsList.module.scss';
 
-const PostsList = ({ fetchPosts, postsList }) => {
+const PostsList = ({ fetchPosts, deletePost, postsList }) => {
   useEffect(() => {
     fetchPosts();
+
+    console.log(postsList);
   }, [fetchPosts]);
 
   return (
     <section className={style['posts-list']}>
-      {postsList && postsList.map(post => <Post post={post} key={post.id} />)}
+      {postsList && postsList.map(post => <Post post={post} key={post._id} deletePost={deletePost} />)}
     </section>
   );
 };
@@ -21,8 +23,9 @@ PostsList.propTypes = {
   postsList: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string,
     body: PropTypes.string,
-    id: PropTypes.string,
+    _id: PropTypes.string,
   })).isRequired,
+  deletePost: PropTypes.func.isRequired,
 };
 
 export default PostsList;

@@ -34,4 +34,13 @@ router.get('/getPosts', (req, res) => {
   });
 });
 
+router.post('/deletePost/:id', (req, res) => {
+  PostModel.deleteOne({
+    _id: req.params.id,
+  }, (err) => {
+    if (err) throw err;
+    res.status(200).send();
+  });
+});
+
 module.exports = router;
